@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HTK.UI", "HTK.UI\HTK.UI.csproj", "{994165B3-D308-4B0F-A640-2FF55DA1971E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HTK.Entitties", "HTK.Entitties\HTK.Entitties.csproj", "{88026564-08ED-4F50-BC1C-727EC7AA94F9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HTK.Services", "HTK.Services\HTK.Services.csproj", "{E63F4641-52D3-426E-9935-D54F7227DF2D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HTK.DataAccess", "HTK.DataAccess\HTK.DataAccess.csproj", "{4CD5B79D-D933-41A0-B2E3-AB3C7B6EBA27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HTK.Tests", "HTK.Tests\HTK.Tests.csproj", "{38DD6705-16CF-4D34-89FD-67D1A3E7C3AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HTK.Utilities", "HTK.Utilities\HTK.Utilities.csproj", "{FE0BB3FE-C0A8-4CFB-95BF-C687B582903C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{994165B3-D308-4B0F-A640-2FF55DA1971E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{994165B3-D308-4B0F-A640-2FF55DA1971E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{994165B3-D308-4B0F-A640-2FF55DA1971E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{994165B3-D308-4B0F-A640-2FF55DA1971E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88026564-08ED-4F50-BC1C-727EC7AA94F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88026564-08ED-4F50-BC1C-727EC7AA94F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88026564-08ED-4F50-BC1C-727EC7AA94F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88026564-08ED-4F50-BC1C-727EC7AA94F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E63F4641-52D3-426E-9935-D54F7227DF2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E63F4641-52D3-426E-9935-D54F7227DF2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E63F4641-52D3-426E-9935-D54F7227DF2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E63F4641-52D3-426E-9935-D54F7227DF2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CD5B79D-D933-41A0-B2E3-AB3C7B6EBA27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CD5B79D-D933-41A0-B2E3-AB3C7B6EBA27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CD5B79D-D933-41A0-B2E3-AB3C7B6EBA27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CD5B79D-D933-41A0-B2E3-AB3C7B6EBA27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38DD6705-16CF-4D34-89FD-67D1A3E7C3AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38DD6705-16CF-4D34-89FD-67D1A3E7C3AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38DD6705-16CF-4D34-89FD-67D1A3E7C3AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38DD6705-16CF-4D34-89FD-67D1A3E7C3AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE0BB3FE-C0A8-4CFB-95BF-C687B582903C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE0BB3FE-C0A8-4CFB-95BF-C687B582903C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE0BB3FE-C0A8-4CFB-95BF-C687B582903C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE0BB3FE-C0A8-4CFB-95BF-C687B582903C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7AA352C4-26B2-4ED4-A0B4-FD33E72C7369}
+	EndGlobalSection
+EndGlobal

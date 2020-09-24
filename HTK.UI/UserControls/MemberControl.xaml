@@ -1,0 +1,147 @@
+﻿<UserControl x:Class="HTK.UI.UserControls.MemberControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HTK.UI.UserControls"
+             xmlns:viewModels="clr-namespace:HTK.UI.ViewModels"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="620">
+
+    <UserControl.DataContext>
+        <viewModels:MemberViewModel />
+    </UserControl.DataContext>
+    
+    <Grid Loaded="OnLoaded">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal"
+                    Margin="0, 5"
+                    Grid.Row="0">
+
+            <Button Content="💾" 
+                    Click="SaveClick"
+                    Margin="2, 0"
+                    Padding="15, 0"/>
+            <Button Content="➕"
+                    Click="AddClick"
+                    Margin="2, 0"
+                    Padding="15, 0" />
+            <Button Content="➖"
+                    Margin="2, 0"
+                    Padding="15, 0" />
+        </StackPanel>
+
+        <ListView Grid.Row="1"
+                  x:Name="memberList"
+                  ItemsSource="{Binding Members}"
+                  SelectedItem="{Binding SelectedMember}"
+                  Grid.RowSpan="7"
+                  Grid.Column="0">
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name"
+                                    DisplayMemberBinding="{Binding MemberName}" />
+                    <GridViewColumn Header="Addresse"
+                                    DisplayMemberBinding="{Binding MemberAddress}" />
+                    <GridViewColumn Header="Mobil"
+                                    DisplayMemberBinding="{Binding MemberPhone}" />
+                    <GridViewColumn Header="E-mail"
+                                    DisplayMemberBinding="{Binding MemberMail}" />
+                </GridView>
+            </ListView.View>
+
+        </ListView>
+
+        <Label Content="Navn"
+               Grid.Row="1"
+               Grid.Column="1" />
+        <Label Content="Adresse"
+               Grid.Row="2"
+               Grid.Column="1" />
+        <Label Content="Mobilnummer"
+               Grid.Row="3"
+               Grid.Column="1" />
+        <Label Content="E-mail"
+               Grid.Row="4"
+               Grid.Column="1" />
+        <Label Content="Fødselsdato"
+               Grid.Row="5"
+               Grid.Column="1" />
+        <Label Content="Niveau"
+               Grid.Row="6"
+               Grid.Column="1" />
+
+        <TextBox Margin="5, 5, 5, 10"
+                 Text="{Binding SelectedMember.MemberName, Mode=TwoWay}"
+                 Grid.Row="1"
+                 Grid.Column="2" />
+        <TextBox Margin="5, 5, 5, 10"
+                 Grid.Row="2"
+                 Text="{Binding SelectedMember.MemberAddress, Mode=TwoWay}"
+                 Grid.Column="2" />
+        <TextBox Margin="5, 5, 5, 10"
+                 Grid.Row="3"
+                 Text="{Binding SelectedMember.MemberPhone, Mode=TwoWay}"
+                 Grid.Column="2" />
+        <TextBox Margin="5, 5, 5, 10"
+                 Grid.Row="4"
+                 Text="{Binding SelectedMember.MemberMail, Mode=TwoWay}"
+                 Grid.Column="2" />
+        <DatePicker Margin="5"
+                    Grid.Row="5"
+                    SelectedDate="{Binding SelectedMember.MemberBirthDate, Mode=TwoWay}"
+                    Grid.Column="2" />
+
+        <ComboBox Margin="5"
+                  IsEnabled="False"
+                  Grid.Row="6"
+                  Grid.Column="2">
+            <ComboBoxItem Content="Nybegynder" 
+                          IsSelected="True"/>
+            <ComboBoxItem Content="Let øvet" />
+            <ComboBoxItem Content="Øvet" />
+            <ComboBoxItem Content="Elite" />
+        </ComboBox>
+
+        <ListView Grid.Row="1"
+                  x:Name="courtList"
+                  ItemsSource="{Binding Courts}"
+                  SelectedItem="{Binding SelectedCourt}"
+                  Grid.Column="3"
+                  Grid.RowSpan="6">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Tennis Bane"
+                                    Width="150"
+                                    DisplayMemberBinding="{Binding CourtName}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <TextBox Margin="5, 5, 5, 40"
+                 Text="{Binding SelectedCourt.CourtName}"
+                 Grid.Row="7"
+                 Grid.Column="3" />
+
+    </Grid>
+</UserControl>
