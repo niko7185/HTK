@@ -52,12 +52,22 @@ namespace HTK.UI.UserControls
 
                     try
                     {
-                        viewModel.AddMember();
+
+                        if(memberList.SelectedIndex < 0)
+                        {
+                            viewModel.AddMember();
+                        }
+                        else
+                        {
+                            viewModel.SaveMember();
+                        }
+
+                        viewModel.Error = "";
                     }
                     catch(Exception ex)
                     {
 
-                        MessageBox.Show(viewModel.SelectedMember.MemberName);
+                        viewModel.Error = ex.Message;
                     }
                 }
 
@@ -69,16 +79,28 @@ namespace HTK.UI.UserControls
 
                     try
                     {
-                        viewModel.AddCourt();
+                        if(courtList.SelectedIndex < 0)
+                        {
+                            viewModel.AddCourt();
+                        }
+                        else
+                        {
+                            viewModel.SaveCourt();
+                        }
+
+                        viewModel.Error = "";
                     }
                     catch(Exception ex)
                     {
 
                         MessageBox.Show(ex.Message);
+
+                        viewModel.Error = ex.Message;
                     }
                 }
             }
 
+            AddBtn.IsEnabled = true;
         }
 
         private void AddClick(object sender, RoutedEventArgs e)
@@ -87,6 +109,8 @@ namespace HTK.UI.UserControls
                 memberList.SelectedIndex = -1;
             else
                 courtList.SelectedIndex = -1;
+
+            AddBtn.IsEnabled = false;
         }
     }
 }

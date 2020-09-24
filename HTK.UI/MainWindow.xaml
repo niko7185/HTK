@@ -21,10 +21,19 @@
                     Margin="1">
 
             <TabItem Header="Members">
-                
-            <usercontrols:MemberControl />
+
+                <usercontrols:MemberControl />
             </TabItem>
-            <TabItem Header="Reservation">
+            <TabItem Header="Reservation"
+                     RenderTransformOrigin="0.5,0.5">
+                <TabItem.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform />
+                        <SkewTransform />
+                        <RotateTransform Angle="0.996" />
+                        <TranslateTransform />
+                    </TransformGroup>
+                </TabItem.RenderTransform>
 
                 <usercontrols:ReservationControl />
             </TabItem>
@@ -32,7 +41,7 @@
 
                 <usercontrols:RankControl />
             </TabItem>
-            
+
         </TabControl>
     </Grid>
 </Window>

@@ -2,7 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using System.Windows;
+using HTK.UI;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -19,6 +20,9 @@ namespace HTK.Api
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
+            Application app = new Application();
+            app.Run(new MainWindow());
         }
 
         public IConfiguration Configuration { get; }

@@ -16,18 +16,38 @@ namespace HTK.UI.ViewModels
 
         private MemberRepository memberRep;
         private CourtRepository courtsRep;
+        private string error;
 
         public ObservableCollection<Members> Members { get; set; }
         public ObservableCollection<Courts> Courts { get; set; }
+
+        public string Error
+        {
+            get => error;
+            set
+            {
+                error = value;
+
+                OnPropertyChanged(nameof(Error));
+            }
+        }
 
         public Members SelectedMember
         {
             get => selectedMember;
             set
             {
-                selectedMember = value;
+                try
+                {
+                    selectedMember = value;
 
-                OnPropertyChanged(nameof(SelectedMember));
+                    OnPropertyChanged(nameof(SelectedMember));
+                }
+                catch(ArgumentOutOfRangeException ex)
+                {
+
+                    Error = ex.Message;
+                }
             }
         }
         public Courts SelectedCourt
@@ -35,9 +55,17 @@ namespace HTK.UI.ViewModels
             get => selectedCourt;
             set
             {
-                selectedCourt = value;
+                try
+                {
+                    selectedCourt = value;
 
-                OnPropertyChanged(nameof(SelectedCourt));
+                    OnPropertyChanged(nameof(SelectedCourt));
+                }
+                catch(ArgumentOutOfRangeException ex)
+                {
+
+                    Error = ex.Message;
+                }
             }
         }
 
@@ -52,6 +80,8 @@ namespace HTK.UI.ViewModels
             allMembers = new List<Members>();
 
             Courts = new ObservableCollection<Courts>();
+
+            selectedMember = new Members();
         }
 
         public void LoadAll()
@@ -94,6 +124,8 @@ namespace HTK.UI.ViewModels
                 member.IsActive = true;
 
                 memberRep.Add(member);
+
+                Members.Add(member);
             }
             catch(Exception ex)
             {
@@ -109,6 +141,8 @@ namespace HTK.UI.ViewModels
                 Courts court = selectedCourt;
 
                 courtsRep.Add(court);
+
+                Courts.Add(court);
             }
             catch(Exception ex)
             {

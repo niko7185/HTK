@@ -1,10 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HTK.DataAccess\HTK.DataAccess.csproj" />
+    <ProjectReference Include="..\HTK.Entitties\HTK.Entitties.csproj" />
+    <ProjectReference Include="..\HTK.UI\HTK.UI.csproj" />
   </ItemGroup>
 
 </Project>

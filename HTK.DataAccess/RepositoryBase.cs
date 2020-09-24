@@ -1,9 +1,12 @@
 ﻿using HTK.Entitties;
 
+using Microsoft.EntityFrameworkCore;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace HTK.DataAccess
 {
@@ -31,9 +34,9 @@ namespace HTK.DataAccess
             htkContext.SaveChanges();
         }
 
-        public IEnumerable<T> GetAll()
+        public async Task<IEnumerable<T>> GetAll()
         {
-            return htkContext.Set<T>().ToList();
+            return await htkContext.Set<T>().ToListAsync();
         }
 
         public void Update()

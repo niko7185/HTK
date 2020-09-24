@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace HTK.DataAccess
 {
     public interface IRepositoryBase<T>
     {
 
-        public IEnumerable<T> GetAll();
+        public Task<IEnumerable<T>> GetAll();
 
         public void Update();
 
