@@ -16,6 +16,7 @@ namespace HTK.UI.ViewModels
 
         private MemberRepository memberRep;
         private CourtRepository courtsRep;
+        private RankRepository rankRep;
         private string error;
 
         public ObservableCollection<Members> Members { get; set; }
@@ -71,6 +72,7 @@ namespace HTK.UI.ViewModels
 
         public MemberViewModel()
         {
+            //initializing fields
             memberRep = new MemberRepository();
 
             courtsRep = new CourtRepository();
@@ -82,13 +84,16 @@ namespace HTK.UI.ViewModels
             Courts = new ObservableCollection<Courts>();
 
             selectedMember = new Members();
+
+            rankRep = new RankRepository();
         }
 
-        public void LoadAll()
+        public async void LoadAll()
         {
-            allMembers = memberRep.GetAll().ToList();
+            //Retrieve all members and courts from db asynchronously 
+            allMembers = (List<Members>)await memberRep.GetAll();
 
-            List<Members> members = memberRep.GetActiveMembers().ToList();
+            List<Members> members = (List<Members>)await memberRep.GetActiveMembers();
             Members.Clear();
 
             foreach(var member in members)
@@ -96,7 +101,7 @@ namespace HTK.UI.ViewModels
                 Members.Add(member);
             }
 
-            List<Courts> courts = courtsRep.GetAll().ToList();
+            List<Courts> courts = (List<Courts>)await courtsRep.GetAll();
             Courts.Clear();
 
             foreach(var court in courts)
@@ -115,11 +120,32 @@ namespace HTK.UI.ViewModels
             courtsRep.Update();
         }
 
-        public void AddMember()
+        public void AddMember(int level)
         {
+            // Add new member with the user-entered values and add it to the db
             try
             {
-                Members member = selectedMember;
+                Members member = new Members();
+
+                Ranks rank = new Ranks();
+
+                rank.Points = 50 + (level * 10);
+
+                member.Rank = rank;
+
+                member.MemberMail = selectedMember.MemberMail;
+
+                member.MemberName = selectedMember.MemberName;
+
+                member.MemberAddress = selectedMember.MemberAddress;
+
+                member.IsActive = true;
+
+                member.MemberBirthDate = selectedMember.MemberBirthDate;
+
+                member.MemberPhone = selectedMember.MemberPhone;
+
+                rankRep.Add(rank);
 
                 member.IsActive = true;
 
@@ -130,15 +156,18 @@ namespace HTK.UI.ViewModels
             catch(Exception ex)
             {
 
-                throw new Exception(ex.Message);
+                throw new Exception(ex.GetType().ToString());
             }
         }
 
         public void AddCourt()
         {
+            // Add new court with the user-entered value and add it to the db
             try
             {
-                Courts court = selectedCourt;
+                Courts court = new Courts();
+
+                court.CourtName = selectedCourt.CourtName;
 
                 courtsRep.Add(court);
 

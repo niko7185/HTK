@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\HTK.DataAccess\HTK.DataAccess.csproj" />
     <ProjectReference Include="..\HTK.Entitties\HTK.Entitties.csproj" />
+    <ProjectReference Include="..\HTK.Services\HTK.Services.csproj" />
   </ItemGroup>
 
 </Project>

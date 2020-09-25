@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using HTK.UI;
@@ -17,15 +18,22 @@ namespace HTK.Api
 {
     public class Startup
     {
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
 
-            Application app = new Application();
-            app.Run(new MainWindow());
+            //OpenWindow();
         }
 
         public IConfiguration Configuration { get; }
+
+        [STAThread]
+        public void OpenWindow()
+        {
+            Application app = new Application();
+            app.Run(new MainWindow());
+        }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)

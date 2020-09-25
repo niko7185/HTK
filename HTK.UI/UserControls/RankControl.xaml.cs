@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HTK.UI.ViewModels;
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -18,9 +20,22 @@ namespace HTK.UI.UserControls
     /// </summary>
     public partial class RankControl: UserControl
     {
+        private RankViewModel viewModel;
+
         public RankControl()
         {
             InitializeComponent();
+
+            viewModel = DataContext as RankViewModel;
         }
+
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            viewModel.LoadAll();
+
+
+        }
+
+
     }
 }

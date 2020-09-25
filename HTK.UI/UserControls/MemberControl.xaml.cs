@@ -26,6 +26,7 @@ namespace HTK.UI.UserControls
         {
             InitializeComponent();
 
+            //Save the viewmodel from the datacontext to a field
             viewModel = DataContext as MemberViewModel;
 
             memberSelected = true;
@@ -33,6 +34,7 @@ namespace HTK.UI.UserControls
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
+            //Load all members from db
             viewModel.LoadAll();
 
             if(viewModel.Members.Count > 0)
@@ -44,63 +46,59 @@ namespace HTK.UI.UserControls
         private void SaveClick(object sender, RoutedEventArgs e)
         {
 
+            //Save or add either members or courts depending on which is selected
             if(memberSelected)
             {
 
-                if(memberList.SelectedIndex < 0)
+                try
                 {
 
-                    try
+                    //If a member is selected then update it. If not add it
+                    if(memberList.SelectedIndex < 0)
                     {
-
-                        if(memberList.SelectedIndex < 0)
-                        {
-                            viewModel.AddMember();
-                        }
-                        else
-                        {
-                            viewModel.SaveMember();
-                        }
-
-                        viewModel.Error = "";
+                        viewModel.AddMember(level.SelectedIndex);
                     }
-                    catch(Exception ex)
+                    else
                     {
-
-                        viewModel.Error = ex.Message;
+                        viewModel.SaveMember();
                     }
+
+                    viewModel.Error = "";
+                }
+                catch(Exception ex)
+                {
+
+                    viewModel.Error = ex.Message;
                 }
 
             }
             else
             {
-                if(courtList.SelectedIndex < 0)
+                try
+                {
+                    //If a court is selected then update it. If not add it
+                    if(courtList.SelectedIndex < 0)
+                    {
+                        viewModel.AddCourt();
+                    }
+                    else
+                    {
+                        viewModel.SaveCourt();
+                    }
+
+                    viewModel.Error = "";
+                }
+                catch(Exception ex)
                 {
 
-                    try
-                    {
-                        if(courtList.SelectedIndex < 0)
-                        {
-                            viewModel.AddCourt();
-                        }
-                        else
-                        {
-                            viewModel.SaveCourt();
-                        }
+                    MessageBox.Show(ex.Message);
 
-                        viewModel.Error = "";
-                    }
-                    catch(Exception ex)
-                    {
-
-                        MessageBox.Show(ex.Message);
-
-                        viewModel.Error = ex.Message;
-                    }
+                    viewModel.Error = ex.Message;
                 }
             }
 
             AddBtn.IsEnabled = true;
+            level.IsEnabled = false;
         }
 
         private void AddClick(object sender, RoutedEventArgs e)
@@ -111,6 +109,8 @@ namespace HTK.UI.UserControls
                 courtList.SelectedIndex = -1;
 
             AddBtn.IsEnabled = false;
+
+            level.IsEnabled = true;
         }
     }
 }

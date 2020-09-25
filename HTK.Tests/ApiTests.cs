@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
+using HTK.Entitties;
+using HTK.Services;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace HTK.Tests
@@ -11,27 +14,15 @@ namespace HTK.Tests
     {
 
         [Fact]
-        public async System.Threading.Tasks.Task ConnectionTestAsync()
+        public async Task ConnectionTestAsync()
         {
 
-            HttpWebRequest httpWebRequest = WebRequest.CreateHttp("https://localhost:44301/weatherforecast");
+            RankService rankService = new RankService();
 
-            httpWebRequest.Method = WebRequestMethods.Http.Get;
+            List<Members> members = await rankService.GetMembersAsync();
 
-            httpWebRequest.Accept = "application/json";
+            Assert.True(members.Count > 0);
 
-
-            string result;
-
-            using(HttpWebResponse response = (HttpWebResponse)await httpWebRequest.GetResponseAsync())
-            {
-
-                using StreamReader sr = new StreamReader(response.GetResponseStream());
-
-                result = await sr.ReadToEndAsync();
-            };
-
-            Assert.True(httpWebRequest.HaveResponse);
         }
     }
 }

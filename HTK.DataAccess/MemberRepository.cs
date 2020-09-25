@@ -11,10 +11,10 @@ namespace HTK.DataAccess
     public class MemberRepository : RepositoryBase<Members>
     {
 
-        public List<Members> GetActiveMembers()
+        public async Task<IEnumerable<Members>> GetActiveMembers()
         {
 
-            return htkContext.Members.Where(m => m.IsActive).ToList();
+            return await htkContext.Members.Where(m => m.IsActive).ToListAsync();
 
         }
 

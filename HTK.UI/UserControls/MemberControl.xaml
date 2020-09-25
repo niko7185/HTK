@@ -114,6 +114,7 @@
                     Grid.Column="2" />
 
         <ComboBox Margin="5"
+                  x:Name="level"
                   IsEnabled="False"
                   Grid.Row="6"
                   Grid.Column="2">
